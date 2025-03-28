@@ -1,25 +1,12 @@
-import sys
-sys.setrecursionlimit(300000) 
-
 n = int(input())
+dp = [0]* n
 
-arr = list(map(int, input().split()))
+num_arr = list(map(int, input().split()))
 
-sum_val = arr[0]
-max_val = arr[0]
+dp[0] = num_arr[0]
+# dp[1] = max(dp[0] + num_arr[1], num_arr[1])
+# dp[2] = max(dp[1] + num_arr[2], num_arr[2])
+for i in range(1, n):
+    dp[i] = max(dp[i-1] + num_arr[i], num_arr[i])
 
-def dp(i):
-    global sum_val, max_val
-    if i >= len(arr):
-        return
-
-    if ((sum_val + arr[i]) >= arr[i]):
-        sum_val = sum_val + arr[i]
-    else:
-        sum_val = arr[i] 
-
-    max_val = max(max_val, sum_val)
-    dp(i+1)
-dp(1)
-
-print(max_val)
+print(max(dp))
