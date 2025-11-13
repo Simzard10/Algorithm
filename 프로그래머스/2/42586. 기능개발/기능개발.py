@@ -20,6 +20,5 @@ def solution(progresses, speeds):
         else: # 먼저 배포되어야하는 작업이 더 빨리 끝날 때 
             answer.append(1)
             answer_stack.append(temp)
-
     
     return answer
