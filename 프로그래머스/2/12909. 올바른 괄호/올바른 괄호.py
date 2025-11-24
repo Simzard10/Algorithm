@@ -1,17 +1,13 @@
 def solution(s):
-    answer = True
-    temp = []
-    for i in s:
-        if i == "(":
-            temp.append("(")
-        else:
-            temp.append("(")
-            if temp[len(temp)-1] == "(" and len(temp) > 1:
-                temp.pop()
-                temp.pop()
-            else:
-                answer = False
+    count = 0
     
-    if len(temp) > 0:
-        return False
-    return True
+    for char in s:
+        if char == '(':
+            count += 1
+        else:
+            count -= 1
+        
+        if count < 0:
+            return False
+            
+    return count == 0
